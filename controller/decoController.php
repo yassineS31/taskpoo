@@ -9,5 +9,6 @@ class DecoController extends AbstractController {
         exit;
     }
     
-    public function render():void{}
+    public function render():void{
+    }
 }
