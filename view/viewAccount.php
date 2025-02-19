@@ -21,10 +21,10 @@ class ViewAccount implements interfaceView{
         <section>
             <h1>Liste d'Utilisateurs</h1>
             <ul>
-                <?php echo $this->listUsers ?>
+                <?php echo $this->getListUsers() ?>
             </ul>
         </section>
 <?php
-return ob_get_clean();
+        return ob_get_clean();
     }
 }

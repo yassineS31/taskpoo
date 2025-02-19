@@ -1,24 +1,19 @@
 <?php
+//FICHIER D'EXECUTION, DONC IMPORT DE TOUTES LES RESSOURCES
+session_start();
 
+include './env.php';
 include './utils/utils.php';
-include './interfaces/InterfaceView.php';
-include 'controller/categorieController.php';
-
-include './vue/header.php';
-include './vue/account.php';
-include './vue/footer.php';
+include './interface/interfaceView.php';
+include './interface/interfaceBDD.php';
 include './abstract/abstractController.php';
-include './abstract/accountController.php';
-include './interfaces/interfaceBDD.php';
-// // Nav
-// $nav = new headerView();
-// echo $nav->displayView();
-// // Body
-// $body = new ViewAccount();
-// echo $body->displayView();
-// // Footer
-// $footer = new ViewFooter();
-// echo $footer->displayView();
+include './abstract/abstractModel.php';
+include './view/viewHeader.php';
+include './view/viewAccount.php';
+include './view/viewFooter.php';
+include './utils/mySQLBDD.php';
+include './model/accountModel.php';
+include './controller/accountController.php';
 
-$home = new AccountController(null,['header'=>new ViewHeader(),'footer'=> new ViewFooter()]);
+$home = new AccountController(['accountModel'=>new AccountModel(new MySQLBDD())],['header'=>new ViewHeader(),'footer'=> new ViewFooter(), 'accueil' => new ViewAccount()]);
 $home->render();
